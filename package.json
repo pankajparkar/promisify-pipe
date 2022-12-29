@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack serve"
+    "serve": "webpack serve --mode development",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,8 @@
   },
   "homepage": "https://github.com/pankajparkar/promisify-pipe#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   }
 }
