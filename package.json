@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "serve": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pankajparkar/promisify-pipe/issues"
   },
-  "homepage": "https://github.com/pankajparkar/promisify-pipe#readme"
+  "homepage": "https://github.com/pankajparkar/promisify-pipe#readme",
+  "devDependencies": {
+    "webpack-dev-server": "^4.11.1"
+  }
 }
