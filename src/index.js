@@ -17,13 +17,13 @@ function timer(time = 1000) {
 }
 
 function a10() {
-    const promise = timer(10000);
+    const promise = timer(2000);
     promise.pipe(
-        () => timer(3000),
-        () => timer(2000),
+        (t) => timer(t + 1000),
+        (t) => timer(t + 2000),
     ).then(() => {
         console.log('This', this);
-    })
+    });
 }
 
 console.log('--------STARTED----------');
