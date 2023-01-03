@@ -1,6 +1,10 @@
 Promise.prototype.pipe = function () {
     console.dir('Test', this, arguments);
-    return this;
+    return Array.from(arguments).reduce((acc, curr) => {
+        return acc.then(curr);
+    }, this);
+
+    // return this;
 };
 
 function timer(time = 1000) {
@@ -13,12 +17,10 @@ function timer(time = 1000) {
 }
 
 function a10() {
-    const promise = timer(1000);
-    const promise2Sec = timer(2000);
-    const promise3Sec = timer(3000);
+    const promise = timer(10000);
     promise.pipe(
-        promise2Sec,
-        promise3Sec
+        () => timer(3000),
+        () => timer(2000),
     ).then(() => {
         console.log('This', this);
     })
