@@ -1,7 +1,9 @@
+import { expect, test } from '@jest/globals';
+
 
 test('Promise should have pipe method', () => {
-    // (new Promise()).pipe()
-    expect(true).toBe(true);
+    const promise = Promise.resolve();
+    expect(promise.pipe).toBeDefined();
 });
 
 test('Should perform chain on pipe', () => {
