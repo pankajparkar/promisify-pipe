@@ -1,10 +1,10 @@
 Promise.prototype.pipe = function () {
-    console.dir('Test', this, arguments);
     return Array.from(arguments).reduce((acc, curr) => {
+        if (curr.callee === catchError) {
+            return acc.catch(curr[0]);
+        }
         return acc.then(curr);
     }, this);
-
-    // return this;
 };
 
 function timer(time = 1000) {
@@ -16,13 +16,19 @@ function timer(time = 1000) {
     });
 }
 
+function catchError() {
+    return arguments;
+}
+
 function a10() {
     const promise = timer(2000);
     promise.pipe(
         (t) => timer(t + 1000),
         (t) => timer(t + 2000),
-    ).then(() => {
-        console.log('This', this);
+        () => { throw 'error'; },
+        catchError(() => timer(1500)),
+    ).then((result) => {
+        console.log('This', result);
     });
 }
 
